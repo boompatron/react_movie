@@ -17,18 +17,23 @@
 <script type="text/babel">
     const root = document.getElementById("root");
     function App(){
-        const [counter, upCounter] = React.useState(0);
-        const onClick = () =>{
-            upCounter(counter + 1);
-        }
+        const [minutes, setMin] = React.useState(0);
+        const onChange = (event) =>{
+            setMin(event.target.value);
+        };
         return (
             <div>
-                <h3>
-                    Total Clicks : {counter}
-                </h3>
-                <button onClick={onClick}>
-                    Click Me
-                </button>
+                <div>
+                    <h1>Super Converter</h1>
+                    <label htmlFor="min">Minutes</label>
+                    <input value={minutes} id="min" type="number" placeholder="Minutes" onChange={onChange}
+                    />
+                    <h4>You want to convert {minutes}</h4>
+                </div>
+                <div>
+                    <label htmlFor="hour">Hours</label>
+                    <input value={minutes / 60} id="hour" type="number" placeholder="Hours"/>
+                </div>
             </div>
         );
     }
