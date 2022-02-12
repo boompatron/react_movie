@@ -21,6 +21,7 @@
         const onChange = (event) =>{
             setMin(event.target.value);
         };
+        const reset = () => setMin(0);
         return (
             <div>
                 <div>
@@ -34,6 +35,7 @@
                     <label htmlFor="hour">Hours</label>
                     <input value={minutes / 60} id="hour" type="number" placeholder="Hours"/>
                 </div>
+                <button onClick={reset}>Reset</button>
             </div>
         );
     }
