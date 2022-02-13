@@ -16,77 +16,22 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 <script type="text/babel">
     const root = document.getElementById("root");
-    function Min2Hours(){
-        const [amount, setAmount] = React.useState(0);
-        const [flipped, setFlipped] = React.useState(false);
-        const onChange = (event) =>{
-            setAmount(event.target.value);
-        };
-        const onFlip = () => setFlipped((cur) => !cur);
-        const reset = () => {
-            reset();
-            setAmount(0);
-        }
-        return (
-            <div>
-                <div>
-                    <label htmlFor="min">Minutes</label>
-                    <input value={flipped ? amount * 60 : amount} 
-                    id="min" type="number" placeholder="Minutes" onChange={onChange} disabled={flipped}/>
-                </div>
-                <div>
-                    <label htmlFor="hour">Hours</label>
-                    <input value={flipped ? amount : Math.round(amount / 60)} 
-                    id="hour" type="number" placeholder="Hours"  onChange={onChange} disabled={!flipped}/>
-                </div>
-                <button onClick={reset}>Reset</button>
-                <button onClick={onFlip}>{flipped ? "Set Minutes" : "Set Hours"}</button>
-            </div>
-        );
-    }
-    function Kilo2Mile(){
-        const [amount, setAmount] = React.useState(0);
-        const [flipped, setFlipped] = React.useState(false);
-        const onChange = (event) =>{
-            setAmount(event.target.value);
-        };
-        const onFlip = () => setFlipped((cur) => !cur);
-        const reset = () => {
-            reset();
-            setAmount(0);
-        }
-        return (
-            <div>
-                <div>
-                    <label htmlFor="mile">Mile</label>
-                    <input value={flipped ? amount * 1.6 : amount} 
-                    id="mile" type="number" placeholder="Miles" onChange={onChange} disabled={flipped}/>
-                </div>
-                <div>
-                    <label htmlFor="kilo">Hours</label>
-                    <input value={flipped ? amount : Math.round(amount / 1.6)} 
-                    id="kilo" type="number" placeholder="Kilo Meters"  onChange={onChange} disabled={!flipped}/>
-                </div>
-                <button onClick={reset}>Reset</button>
-                <button onClick={onFlip}>{flipped ? "Set Miles" : "Set Kilos"}</button>
-            </div>
-        );
+    function Btn({text}){
+        return (<button 
+            style={{
+                backgroundColor:"lavender",
+                color:"black",
+                padding:"10px 20px",
+                border:0,
+                borderRadius:10,
+            }}>{text}</button>);
     }
     function App(){
-        const [index, setIndex] = React.useState(0);
-        function onSelect(event){
-            setIndex(event.target.value);
-        }
         return (
-            <div>
-                <h1>Super Converter</h1>
-                <select value={index} onChange={onSelect}>
-                    <option value="0">Minutes & Hours</option>
-                    <option value="1">Kilo & Mile</option>
-                </select>
-                {index == "0" ? <Min2Hours/> : null}
-                {index == "1" ? <Kilo2Mile/> : null}
-            </div>
+        <div>
+            <Btn text="Save" />
+            <Btn text="Continue"/>
+        </div>
         );
     }
     ReactDOM.render(<App />, root);
